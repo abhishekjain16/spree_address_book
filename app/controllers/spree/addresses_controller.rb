@@ -4,13 +4,13 @@ class Spree::AddressesController < Spree::StoreController
   load_and_authorize_resource :class => Spree::Address
 
   def index
-    @addresses = spree_current_user.addresses
+    @addresses = spree_current_user.addresses.includes(:state, :country)
   end
 
   def create
     @address = spree_current_user.addresses.build(params[:address])
     if @address.save
-      flash[:notice] = Spree.t(:successfully_created)
+      flash[:notice] = Spree.t(:successfully_created, :resource => Spree.t(:address))
       redirect_to addresses_path
     else
       render :action => "new"
