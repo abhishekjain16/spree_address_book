@@ -14,3 +14,6 @@ en:
     successfully_updated: "Updated successfully"
     unsuccessfully_updated: "There was an update while trying to update your address."
     save: "Save"
+  spree:
+    address: "Address"
+
