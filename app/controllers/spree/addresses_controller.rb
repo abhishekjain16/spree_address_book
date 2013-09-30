@@ -33,7 +33,7 @@ class Spree::AddressesController < Spree::StoreController
     if @address.editable?
       if @address.update_attributes(params[:address])
         flash[:notice] = Spree.t(:successfully_updated, :resource => Spree.t(:address))
-        redirect_back_or_default(account_path)
+        redirect_back_or_default(addresses_path)
       else
         render :action => "edit"
       end
@@ -43,7 +43,7 @@ class Spree::AddressesController < Spree::StoreController
       @address.update_attribute(:deleted_at, Time.now)
       if new_address.save
         flash[:notice] = Spree.t(:successfully_updated, :resource => Spree.t(:address))
-        redirect_back_or_default(account_path)
+        redirect_back_or_default(addresses_path)
       else
         render :action => "edit"
       end
