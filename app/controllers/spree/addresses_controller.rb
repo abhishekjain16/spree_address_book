@@ -2,6 +2,7 @@ class Spree::AddressesController < Spree::StoreController
   helper Spree::AddressesHelper
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
   load_and_authorize_resource :class => Spree::Address
+  before_filter :authenticate_spree_user!
 
   def index
     @addresses = spree_current_user.addresses.includes(:state, :country)
